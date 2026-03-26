@@ -8,7 +8,7 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Full-screen hero */}
-      <div className="relative flex-1 flex items-center justify-center">
+      <div className="relative flex-1 flex flex-col items-center justify-center">
         {/* Background image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -21,34 +21,36 @@ const Index = () => {
           <div className="absolute inset-0 bg-[hsla(220,10%,8%,0.65)]" />
         </div>
 
-        {/* Content — centered */}
-        <div className="relative z-10 text-center max-w-md mx-auto px-6 space-y-8 animate-fade-in">
-          {/* Title */}
-          <div className="space-y-4">
+        {/* Content — centered with even spacing */}
+        <div className="relative z-10 flex flex-col items-center text-center max-w-md mx-auto px-6 animate-fade-in">
+          {/* Title — pushed higher */}
+          <div className="mb-6">
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
               <span className="text-gold-gradient">Museum</span>{" "}
               <span className="text-foreground">Lens</span>
             </h1>
-            <p className="text-foreground/80 max-w-xs mx-auto leading-relaxed">
-              Experience art through gestures. No clutter, no overload — just you and the art.
-            </p>
           </div>
+
+          {/* Subtitle */}
+          <p className="text-foreground/80 max-w-xs mx-auto leading-relaxed text-center mb-10">
+            Experience art through gestures. No clutter, no overload — just you and the art.
+          </p>
 
           {/* CTA */}
-          <Link to="/scanner">
-            <Button
-              size="lg"
-              className="gap-2 px-8 py-6 text-base font-semibold rounded-full glow-gold"
-            >
-              <ScanLine size={20} />
-              Start Scanning
-            </Button>
-          </Link>
+          <div className="mb-10">
+            <Link to="/scanner">
+              <Button
+                size="lg"
+                className="gap-2 px-8 py-6 text-base font-semibold rounded-full glow-gold"
+              >
+                <ScanLine size={20} />
+                Start Scanning
+              </Button>
+            </Link>
+          </div>
 
           {/* Mission info */}
-          <div className="pt-4">
-            <MissionDialog />
-          </div>
+          <MissionDialog />
         </div>
       </div>
     </div>

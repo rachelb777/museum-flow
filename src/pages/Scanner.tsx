@@ -2,18 +2,54 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Camera } from "lucide-react";
-import handGesture from "@/assets/hand-gesture.png";
 import blurryArtwork from "@/assets/blurry-artwork.jpg";
+
+const gestures = [
+  { label: "Inquiry", svg: (
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+      <path d="M20 8c-2 0-3.5 1.5-3.5 3.5V20" />
+      <path d="M16.5 18c-2-1-4.5-.5-5 2s1.5 4 3 5l4 3c2 1.5 5 1.5 7-1l2-3c1-2 .5-4-1-5" />
+      <path d="M23.5 11.5c0-2-1.5-3.5-3.5-3.5" />
+      <path d="M18 30c0 1 .5 2 1.5 2.5" />
+      <circle cx="20" cy="35" r="1" fill="currentColor" />
+    </svg>
+  )},
+  { label: "Collection", svg: (
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+      <path d="M26 12c2 2 3 5 3 8s-1 6-3 8" />
+      <path d="M26 12c-2-2-5-4-8-4s-6 1-8 4c-2 2-3 5-3 8s1 6 3 8c2 2 5 4 8 4s6-2 8-4" />
+    </svg>
+  )},
+  { label: "Wayfinding", svg: (
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+      <path d="M12 28V16c0-1.5 1-3 3-3h0" />
+      <path d="M12 20h14c2 0 3-1 3-3" />
+      <path d="M26 13l4 4-4 4" />
+      <path d="M9 28h6" />
+    </svg>
+  )},
+  { label: "Live", svg: (
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+      <path d="M10 30V10" />
+      <path d="M10 10h12" />
+      <path d="M10 30h6" />
+    </svg>
+  )},
+];
 
 const Scanner = () => {
   const navigate = useNavigate();
   const [captured, setCaptured] = useState(false);
   const [recognizing, setRecognizing] = useState(false);
   const [matched, setMatched] = useState(false);
+  const [pressing, setPressing] = useState(false);
 
   const handleCapture = () => {
     setCaptured(true);
+    setPressing(true);
     setRecognizing(true);
+
+    setTimeout(() => setPressing(false), 300);
 
     setTimeout(() => {
       setRecognizing(false);
@@ -46,18 +82,6 @@ const Scanner = () => {
           <div className="absolute left-4 right-4 h-px bg-gradient-to-r from-transparent via-primary to-transparent opacity-40 animate-scan-line" />
         )}
 
-        {/* Hand gesture overlay */}
-        {!captured && (
-          <img
-            src={handGesture}
-            alt="Hand gesture overlay"
-            className="absolute z-10 w-32 h-32 sm:w-40 sm:h-40 opacity-30 invert"
-            style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
-            width={512}
-            height={512}
-          />
-        )}
-
         {/* Crosshair overlay */}
         <div className="relative w-52 h-52 sm:w-60 sm:h-60 scanner-crosshair animate-pulse-crosshair z-20">
           <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-primary rounded-tl-lg animate-bracket-glow" />
@@ -77,6 +101,18 @@ const Scanner = () => {
           <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           <span className="text-[11px] text-muted-foreground tracking-wide uppercase">Live</span>
         </div>
+
+        {/* Gesture Legend */}
+        {!captured && (
+          <div className="absolute bottom-14 left-0 right-0 flex justify-center gap-6 z-20">
+            {gestures.map((g) => (
+              <div key={g.label} className="flex flex-col items-center gap-1">
+                <div className="text-primary/70">{g.svg}</div>
+                <span className="text-[9px] text-muted-foreground tracking-wide uppercase">{g.label}</span>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Recognition overlay */}
         {captured && (
@@ -112,7 +148,9 @@ const Scanner = () => {
           size="lg"
           onClick={handleCapture}
           disabled={captured}
-          className="gap-2 px-10 py-6 text-base font-semibold rounded-full glow-gold"
+          className={`gap-2 px-10 py-6 text-base font-semibold rounded-full glow-gold transition-transform duration-150 ${
+            pressing ? "scale-90 opacity-80" : ""
+          }`}
         >
           <Camera size={20} />
           {captured ? "Processing…" : "Capture"}
