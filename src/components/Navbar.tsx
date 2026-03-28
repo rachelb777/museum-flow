@@ -4,10 +4,10 @@ import { Home, ScanLine, HelpCircle, Bookmark, MapPin, Video } from "lucide-reac
 const navItems = [
   { path: "/", icon: Home, label: "Home" },
   { path: "/scanner", icon: ScanLine, label: "Scan" },
-  { path: "/inquiry", icon: HelpCircle, label: "Inquiry" },
+  { path: "/inquiry", icon: HelpCircle, label: "Info" },
   { path: "/collection", icon: Bookmark, label: "Collection" },
-  { path: "/wayfinding", icon: MapPin, label: "Wayfinding" },
-  { path: "/live", icon: Video, label: "Live" },
+  { path: "/wayfinding", icon: MapPin, label: "Directions" },
+  { path: "/live", icon: Video, label: "Video" },
 ];
 
 const Navbar = () => {
@@ -23,9 +23,7 @@ const Navbar = () => {
               key={path}
               to={path}
               className={`flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-lg transition-all duration-200 ${
-                isActive
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
+                isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
               }`}
             >
               <Icon size={20} strokeWidth={isActive ? 2.5 : 1.5} />
