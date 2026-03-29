@@ -80,41 +80,43 @@ const Inquiry = () => {
   };
 
   return (
-    <div className="flex flex-col h-[100dvh] justify-start items-center px-4 pt-4 pb-16 overflow-hidden">
-      <div className="w-full max-w-md flex flex-col flex-1 min-h-0">
+    <div className="min-h-screen flex flex-col items-center px-4 pt-6 pb-32">
+      <div className="w-full max-w-md space-y-6">
         {/* Artwork image with gallery float effect */}
-        <div className="rounded-xl overflow-hidden shadow-2xl border border-primary/40 max-h-[25vh] flex items-center justify-center bg-black/5">
+        <div className="rounded-xl overflow-hidden shadow-2xl border border-primary/40">
           <img
             src={daliAtomicus}
             alt="Dali Atomicus (1948) by Philippe Halsman and Salvador Dalí"
-            className="w-full h-full object-contain"
+            className="w-full h-auto"
+            width={1280}
+            height={960}
           />
         </div>
 
         {/* Centered title & artist */}
-        <div className="text-center space-y-0.5 pt-2">
-          <h1 className="text-base font-bold text-foreground font-sans">
+        <div className="text-center space-y-1 pt-4">
+          <h1 className="text-lg font-bold text-foreground font-sans">
             Dali Atomicus
           </h1>
-          <p className="text-xs italic text-muted-foreground">
+          <p className="text-sm italic text-muted-foreground">
             Philippe Halsman &amp; Salvador Dalí, 1948
           </p>
         </div>
 
         {/* Match Confidence */}
-        <div className="text-center pt-1">
-          <p className="text-[10px] uppercase tracking-widest text-muted-foreground">
+        <div className="text-center pt-2">
+          <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">
             Match Confidence
           </p>
-          <p className="text-lg font-bold text-primary leading-tight">96%</p>
+          <p className="text-xl font-bold text-primary">96%</p>
         </div>
 
         {/* Pill toggle */}
-        <div className="flex justify-center pt-1">
-          <div className="inline-flex rounded-full bg-muted p-0.5 gap-0.5">
+        <div className="flex justify-center">
+          <div className="inline-flex rounded-full bg-muted p-1 gap-1">
             <button
               onClick={() => setMode("story")}
-              className={`px-4 py-1 rounded-full text-xs font-medium transition-colors ${
+              className={`px-5 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 mode === "story"
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
@@ -124,7 +126,7 @@ const Inquiry = () => {
             </button>
             <button
               onClick={() => setMode("audio")}
-              className={`px-4 py-1 rounded-full text-xs font-medium transition-colors ${
+              className={`px-5 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 mode === "audio"
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
@@ -137,35 +139,35 @@ const Inquiry = () => {
 
         {/* Content area */}
         {mode === "story" ? (
-          <div className="space-y-2 pt-2">
+          <div className="space-y-5 pt-2">
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-0.5 font-semibold">
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1 font-semibold">
                 Subject
               </p>
-              <p className="text-sm text-foreground/80 leading-snug">
+              <p className="text-foreground/80 leading-relaxed">
                 Surreal collaboration exploring physical suspension and dynamic motion.
               </p>
             </div>
             <div>
-              <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-0.5 font-semibold">
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1 font-semibold">
                 Key Fact
               </p>
-              <p className="text-sm text-foreground/80 leading-snug">
+              <p className="text-foreground/80 leading-relaxed">
                 It took 28 attempts to capture this single, unedited photograph.
               </p>
             </div>
           </div>
         ) : (
-          <div className="space-y-2 pt-2">
+          <div className="space-y-4 pt-2">
             <div className="flex items-center justify-center gap-2">
-              <span className="text-[10px] uppercase tracking-widest text-muted-foreground shrink-0">
+              <span className="text-xs uppercase tracking-widest text-muted-foreground shrink-0">
                 Audio Narration
               </span>
-              <div className="flex items-center gap-0.5">
+              <div className="flex items-center gap-1">
                 <Button
                   variant="ghost"
                   size="icon"
-                  className={`h-7 w-7 rounded-full border border-border ${
+                  className={`h-9 w-9 rounded-full border border-border ${
                     audioState === "playing"
                       ? "text-primary border-primary"
                       : "text-muted-foreground hover:text-foreground"
@@ -173,12 +175,12 @@ const Inquiry = () => {
                   onClick={handlePlay}
                   aria-label="Play narration"
                 >
-                  <Play size={13} />
+                  <Play size={16} />
                 </Button>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className={`h-7 w-7 rounded-full border border-border ${
+                  className={`h-9 w-9 rounded-full border border-border ${
                     audioState === "paused"
                       ? "text-primary border-primary"
                       : "text-muted-foreground hover:text-foreground"
@@ -186,12 +188,12 @@ const Inquiry = () => {
                   onClick={handlePause}
                   aria-label="Pause narration"
                 >
-                  <Pause size={13} />
+                  <Pause size={16} />
                 </Button>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className={`h-7 w-7 rounded-full border border-border ${
+                  className={`h-9 w-9 rounded-full border border-border ${
                     audioState === "stopped"
                       ? "text-primary border-primary"
                       : "text-muted-foreground hover:text-foreground"
@@ -199,13 +201,13 @@ const Inquiry = () => {
                   onClick={handleStop}
                   aria-label="Stop narration"
                 >
-                  <Square size={13} />
+                  <Square size={16} />
                 </Button>
               </div>
             </div>
 
             {/* Progress bar */}
-            <div className="space-y-0.5">
+            <div className="space-y-1">
               <Slider
                 value={[progress]}
                 max={duration || 100}
@@ -213,7 +215,7 @@ const Inquiry = () => {
                 onValueChange={handleSeek}
                 className="w-full"
               />
-              <div className="flex justify-between text-[9px] text-muted-foreground">
+              <div className="flex justify-between text-[10px] text-muted-foreground">
                 <span>{formatTime(progress)}</span>
                 <span>{formatTime(duration)}</span>
               </div>
@@ -222,22 +224,22 @@ const Inquiry = () => {
         )}
 
         {/* Save to Vault */}
-        <div className="mt-2">
+        <div className="pt-4">
           <Link
             to="/collection"
             onClick={handleSave}
-            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
+            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
           >
-            {saved ? <Check size={16} /> : <Bookmark size={16} />}
+            {saved ? <Check size={18} /> : <Bookmark size={18} />}
             {saved ? "Saved!" : "Save to Vault"}
           </Link>
         </div>
 
-        {/* Spacer to push footer down */}
-        <div className="flex-1" />
+        {/* Divider */}
+        <div className="h-px bg-border" />
 
-        {/* Footer: License & attribution — absolute bottom */}
-        <div className="text-center text-[9px] text-muted-foreground py-0.5">
+        {/* Footer: License & attribution */}
+        <div className="text-center text-[10px] text-muted-foreground pb-4 space-y-0.5">
           <p>
             License:{" "}
             <a
