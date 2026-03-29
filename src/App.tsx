@@ -8,10 +8,11 @@ import Navbar from "@/components/Navbar";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
-const Scan = lazy(() => import("./pages/Scan"));
-const Insights = lazy(() => import("./pages/Insights"));
-const Vault = lazy(() => import("./pages/Vault"));
-const Map = lazy(() => import("./pages/Map"));
+const Scanner = lazy(() => import("./pages/Scanner"));
+const Inquiry = lazy(() => import("./pages/Inquiry"));
+const Collection = lazy(() => import("./pages/Collection"));
+const Wayfinding = lazy(() => import("./pages/Wayfinding"));
+const LiveConnect = lazy(() => import("./pages/LiveConnect"));
 
 const queryClient = new QueryClient();
 
