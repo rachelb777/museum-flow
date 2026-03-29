@@ -8,8 +8,13 @@ const Collection = () => (
       </div>
       <h1 className="font-display text-2xl font-semibold text-gold-gradient">My Vault</h1>
       <p className="text-sm text-muted-foreground leading-relaxed">
-        Vault is accessed by the <span className="text-primary font-medium">"V"</span> hand sign. Your saved art is in
-        Saved Art. Browse the Genres and Artist Portfolio folders to dive deeper into the collection.
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            The <strong>Vault</strong> is your personal archive, accessed by the <strong>"V"</strong> hand sign. Visit
+            your saved art in <strong>Gallery</strong>, explore the <strong>Artist's Portfolio</strong> to see more of
+            your artists' works, or discover similar styles in <strong>Genre Discovery</strong>.
+          </p>
+        </p>
       </p>
     </div>
   </div>
