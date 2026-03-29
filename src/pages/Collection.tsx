@@ -11,7 +11,7 @@ const Collection = () => (
         <p className="text-sm text-muted-foreground leading-relaxed">
           <p className="text-sm text-muted-foreground leading-relaxed">
             The <strong>Vault</strong> is your personal archive, accessed by the <strong>"V"</strong> hand sign. Visit
-            your saved art in <strong>Gallery</strong>, explore the <strong>Artist's Portfolio</strong> to see more of
+            your saved art in <strong>Gallery</strong>, explore the <strong>Artist Portfolio</strong> to see more of
             your artists' works, or discover similar styles in <strong>Genre Discovery</strong>.
           </p>
         </p>
