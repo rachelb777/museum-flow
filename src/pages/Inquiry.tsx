@@ -93,14 +93,31 @@ const Inquiry = () => {
           />
         </div>
 
-        {/* Centered title & artist */}
-        <div className="text-center space-y-1 pt-4">
-          <h1 className="text-lg font-bold text-foreground font-sans">
-            Dali Atomicus
-          </h1>
-          <p className="text-sm italic text-muted-foreground">
-            Philippe Halsman &amp; Salvador Dalí, 1948
-          </p>
+        {/* Title row with save button */}
+        <div className="flex items-center justify-between pt-4 gap-3">
+          <div className="space-y-1 min-w-0">
+            <h1 className="text-lg font-bold text-foreground font-sans">
+              Dali Atomicus
+            </h1>
+            <p className="text-sm italic text-muted-foreground">
+              Philippe Halsman &amp; Salvador Dalí, 1948
+            </p>
+          </div>
+          <button
+            onClick={() => {
+              if (saved) return;
+              setSaved(true);
+              toast({ title: "Saved!", description: "Added to your Vault." });
+            }}
+            className={`shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold
+              bg-white/10 backdrop-blur-md border transition-all duration-300
+              ${saved
+                ? "border-primary text-primary shadow-[0_0_12px_hsl(var(--primary)/0.5)]"
+                : "border-primary/40 text-white hover:border-primary hover:shadow-[0_0_10px_hsl(var(--primary)/0.4)]"
+              }`}
+          >
+            {saved ? "Saved!" : "Save to Vault"}
+          </button>
         </div>
 
         {/* Match Confidence */}
