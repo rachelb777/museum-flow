@@ -1,57 +1,50 @@
 import { Link } from "react-router-dom";
-import { ScanLine } from "lucide-react";
+import { ScanLine, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MissionDialog from "@/components/MissionDialog";
 import heroImage from "@/assets/hero-museum.jpg";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Full-screen hero */}
-      <div className="relative flex-1 flex flex-col items-center justify-center">
-        {/* Background image */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroImage}
-            alt="Museum gallery with dramatic golden lighting"
-            className="w-full h-full object-cover"
-            width={1280}
-            height={960}
-          />
-          <div className="absolute inset-0 bg-[hsla(220,10%,8%,0.65)]" />
-        </div>
+    <div className="h-[100dvh] flex flex-col relative overflow-hidden">
+      {/* Background image with blur + dark tint */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={heroImage}
+          alt="Museum gallery with dramatic golden lighting"
+          className="w-full h-full object-cover blur-[2px]"
+          width={1280}
+          height={960}
+        />
+        <div className="absolute inset-0 bg-[hsla(220,10%,5%,0.45)]" />
+      </div>
 
-        {/* Content — centered with even spacing */}
-        <div className="relative z-10 flex flex-col items-center text-center max-w-md mx-auto px-6 animate-fade-in">
-          {/* Title — pushed higher */}
-          <div className="mb-6">
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-              <span className="text-gold-gradient">Museum</span>{" "}
-              <span className="text-foreground">Lens</span>
-            </h1>
-          </div>
+      {/* Top section — title & subtitle in top 25% */}
+      <div className="relative z-10 flex flex-col items-center justify-center pt-14 pb-4 flex-[0_0_25%] animate-fade-in">
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight drop-shadow-md">
+          <span className="text-gold-gradient">Museum</span>{" "}
+          <span className="text-white drop-shadow-sm">Lens</span>
+        </h1>
+        <p className="text-white/80 max-w-xs mx-auto leading-relaxed text-center mt-3 drop-shadow-sm">
+          Experience art through gestures. No clutter, no overload — just you and the art.
+        </p>
+      </div>
 
-          {/* Subtitle */}
-          <p className="text-foreground/80 max-w-xs mx-auto leading-relaxed text-center mb-10">
-            Experience art through gestures. No clutter, no overload — just you and the art.
-          </p>
+      {/* Spacer — lets the gallery glow through */}
+      <div className="flex-1" />
 
-          {/* CTA */}
-          <div className="mb-10">
-            <Link to="/scanner">
-              <Button
-                size="lg"
-                className="gap-2 px-8 py-6 text-base font-semibold rounded-full glow-gold"
-              >
-                <ScanLine size={20} />
-                Start Scanning
-              </Button>
-            </Link>
-          </div>
-
-          {/* Mission info */}
-          <MissionDialog />
-        </div>
+      {/* Bottom section — CTA + Mission on the "floor" */}
+      <div className="relative z-10 flex flex-col items-center gap-6 pb-24 animate-fade-in">
+        <Link to="/scanner">
+          <Button
+            size="lg"
+            className="gap-2 px-8 py-6 text-base font-semibold rounded-full glow-gold"
+          >
+            <ScanLine size={20} />
+            Start Scanning
+          </Button>
+        </Link>
+        <MissionDialog />
       </div>
     </div>
   );
