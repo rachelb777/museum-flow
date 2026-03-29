@@ -240,17 +240,6 @@ const Inquiry = () => {
           </div>
         )}
 
-        {/* Save to Vault */}
-        <div className="pt-4">
-          <Link
-            to="/collection"
-            onClick={handleSave}
-            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
-          >
-            {saved ? <Check size={18} /> : <Bookmark size={18} />}
-            {saved ? "Saved!" : "Save to Vault"}
-          </Link>
-        </div>
 
         {/* Divider */}
         <div className="h-px bg-border" />
