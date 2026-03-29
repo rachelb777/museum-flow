@@ -25,10 +25,11 @@ const App = () => (
         <Suspense fallback={<div className="min-h-screen bg-background" />}>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/scan" element={<Scan />} />
-            <Route path="/insights" element={<Insights />} />
-            <Route path="/vault" element={<Vault />} />
-            <Route path="/map" element={<Map />} />
+            <Route path="/scanner" element={<Scanner />} />
+            <Route path="/inquiry" element={<Inquiry />} />
+            <Route path="/collection" element={<Collection />} />
+            <Route path="/wayfinding" element={<Wayfinding />} />
+            <Route path="/live" element={<LiveConnect />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
