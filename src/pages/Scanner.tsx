@@ -173,7 +173,8 @@ const Scanner = () => {
 
         {/* Bottom instruction */}
         <div className="absolute bottom-4 left-0 right-0 text-center text-foreground/70 text-sm px-4 z-20">
-          Aim at artwork → make a hand gesture → press Capture
+          <p>Aim at artwork → make a hand gesture → press Capture</p>
+          <p className="mt-1 text-xs opacity-80 italic">Your Info and Audio scans will open in Insights.</p>
         </div>
       </div>
 
