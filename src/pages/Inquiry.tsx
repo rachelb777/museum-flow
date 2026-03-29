@@ -3,7 +3,7 @@ import { Play, Pause, Square } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import daliAtomicus from "@/assets/dali-atomicus.jpg";
 
-const Insights = () => {
+const Inquiry = () => {
   const [audioState, setAudioState] = useState<"stopped" | "playing" | "paused">("stopped");
 
   return (
@@ -23,8 +23,7 @@ const Insights = () => {
         {/* Caption with extra top spacing */}
         <div className="space-y-1 text-sm text-muted-foreground pt-2">
           <p>
-            <span className="text-foreground font-medium">Title:</span> Dali Atomicus (1948) by Philippe Halsman &amp;
-            Salvador Dalí
+            <span className="text-foreground font-medium">Title:</span> Dali Atomicus (1948) by Philippe Halsman &amp; Salvador Dalí
           </p>
           <p>
             <span className="text-foreground font-medium">License:</span>{" "}
@@ -53,7 +52,9 @@ const Insights = () => {
 
         {/* Audio Narration Controls */}
         <div className="flex items-center gap-3">
-          <span className="text-xs uppercase tracking-widest text-muted-foreground shrink-0">Audio Narration</span>
+          <span className="text-xs uppercase tracking-widest text-muted-foreground shrink-0">
+            Audio Narration
+          </span>
           <div className="flex items-center gap-1">
             <Button
               variant="ghost"
@@ -118,4 +119,4 @@ const Insights = () => {
   );
 };
 
-export default Insights;
+export default Inquiry;
