@@ -1,13 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, ScanLine, HelpCircle, Bookmark, MapPin, Video } from "lucide-react";
+import { Home, ScanLine, HelpCircle, Bookmark, MapPin } from "lucide-react";
 
 const navItems = [
   { path: "/", icon: Home, label: "Home" },
   { path: "/scanner", icon: ScanLine, label: "Scan" },
-  { path: "/inquiry", icon: HelpCircle, label: "Info" },
-  { path: "/collection", icon: Bookmark, label: "Collection" },
-  { path: "/wayfinding", icon: MapPin, label: "Directions" },
-  { path: "/live", icon: Video, label: "Video" },
+  { path: "/inquiry", icon: HelpCircle, label: "Insights" },
+  { path: "/collection", icon: Bookmark, label: "Vault" },
+  { path: "/wayfinding", icon: MapPin, label: "Map" },
 ];
 
 const Navbar = () => {

@@ -12,7 +12,7 @@ const Scanner = lazy(() => import("./pages/Scanner"));
 const Inquiry = lazy(() => import("./pages/Inquiry"));
 const Collection = lazy(() => import("./pages/Collection"));
 const Wayfinding = lazy(() => import("./pages/Wayfinding"));
-const LiveConnect = lazy(() => import("./pages/LiveConnect"));
+
 
 const queryClient = new QueryClient();
 
@@ -29,7 +29,7 @@ const App = () => (
             <Route path="/inquiry" element={<Inquiry />} />
             <Route path="/collection" element={<Collection />} />
             <Route path="/wayfinding" element={<Wayfinding />} />
-            <Route path="/live" element={<LiveConnect />} />
+            
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
