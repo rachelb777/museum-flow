@@ -9,7 +9,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
 const Scanner = lazy(() => import("./pages/Scanner"));
-const Inquiry = lazy(() => import("./pages/Inquiry"));
+const Insights = lazy(() => import("./pages/Inquiry"));
 const Collection = lazy(() => import("./pages/Collection"));
 const Wayfinding = lazy(() => import("./pages/Wayfinding"));
 const LiveConnect = lazy(() => import("./pages/LiveConnect"));
@@ -26,7 +26,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/scanner" element={<Scanner />} />
-            <Route path="/inquiry" element={<Inquiry />} />
+            <Route path="/insights" element={<Insights />} />
             <Route path="/collection" element={<Collection />} />
             <Route path="/wayfinding" element={<Wayfinding />} />
             <Route path="/live" element={<LiveConnect />} />
