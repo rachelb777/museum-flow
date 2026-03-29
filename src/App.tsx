@@ -8,11 +8,10 @@ import Navbar from "@/components/Navbar";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
-const Scanner = lazy(() => import("./pages/Scanner"));
-const Inquiry = lazy(() => import("./pages/Inquiry"));
-const Collection = lazy(() => import("./pages/Collection"));
-const Wayfinding = lazy(() => import("./pages/Wayfinding"));
-const LiveConnect = lazy(() => import("./pages/LiveConnect"));
+const Scan = lazy(() => import("./pages/Scan"));
+const Insights = lazy(() => import("./pages/Insights"));
+const Vault = lazy(() => import("./pages/Vault"));
+const Map = lazy(() => import("./pages/Map"));
 
 const queryClient = new QueryClient();
 
@@ -25,11 +24,10 @@ const App = () => (
         <Suspense fallback={<div className="min-h-screen bg-background" />}>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/scanner" element={<Scanner />} />
-            <Route path="/inquiry" element={<Inquiry />} />
-            <Route path="/collection" element={<Collection />} />
-            <Route path="/wayfinding" element={<Wayfinding />} />
-            <Route path="/live" element={<LiveConnect />} />
+            <Route path="/scan" element={<Scan />} />
+            <Route path="/insights" element={<Insights />} />
+            <Route path="/vault" element={<Vault />} />
+            <Route path="/map" element={<Map />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
