@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Play, Pause, Square } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { useToast } from "@/hooks/use-toast";
 import daliAtomicus from "@/assets/dali-atomicus.jpg";
