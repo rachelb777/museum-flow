@@ -1,14 +1,18 @@
 import { useState, useRef, useEffect } from "react";
 import { Play, Pause, Square } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { useToast } from "@/hooks/use-toast";
 import daliAtomicus from "@/assets/dali-atomicus.jpg";
 
-const PLACEHOLDER_AUDIO_URL =
-  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+// Artwork-specific audio mapping
+const ARTWORK_AUDIO: Record<string, string> = {
+  "Dali Atomicus": "/dali-insight.m4a",
+};
+
+const CURRENT_ARTWORK = "Dali Atomicus";
 
 const Inquiry = () => {
+  const artworkAudio = ARTWORK_AUDIO[CURRENT_ARTWORK] || null;
   const [mode, setMode] = useState<"story" | "audio">("story");
   const [audioState, setAudioState] = useState<"stopped" | "playing" | "paused">("stopped");
   const [progress, setProgress] = useState(0);
@@ -18,7 +22,8 @@ const Inquiry = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    const audio = new Audio(PLACEHOLDER_AUDIO_URL);
+    if (!artworkAudio) return;
+    const audio = new Audio(artworkAudio);
     audioRef.current = audio;
 
     audio.addEventListener("loadedmetadata", () => setDuration(audio.duration));
@@ -32,7 +37,7 @@ const Inquiry = () => {
       audio.pause();
       audio.src = "";
     };
-  }, []);
+  }, [artworkAudio]);
 
   const handlePlay = () => {
     audioRef.current?.play();
@@ -140,16 +145,18 @@ const Inquiry = () => {
             >
               Story
             </button>
-            <button
-              onClick={() => setMode("audio")}
-              className={`px-5 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                mode === "audio"
-                  ? "bg-primary text-primary-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              Audio
-            </button>
+            {artworkAudio && (
+              <button
+                onClick={() => setMode("audio")}
+                className={`px-5 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                  mode === "audio"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Audio
+              </button>
+            )}
           </div>
         </div>
 
@@ -175,50 +182,47 @@ const Inquiry = () => {
           </div>
         ) : (
           <div className="space-y-4 pt-2">
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center gap-3">
               <span className="text-xs uppercase tracking-widest text-muted-foreground shrink-0">
                 Audio Narration
               </span>
-              <div className="flex items-center gap-1">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className={`h-9 w-9 rounded-full border border-border ${
-                    audioState === "playing"
-                      ? "text-primary border-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
+              <div className="flex items-center gap-2">
+                <button
                   onClick={handlePlay}
                   aria-label="Play narration"
+                  className={`h-10 w-10 rounded-full flex items-center justify-center
+                    bg-white/10 backdrop-blur-md border transition-all duration-300
+                    ${audioState === "playing"
+                      ? "border-primary text-primary shadow-[0_0_12px_hsl(var(--primary)/0.5)]"
+                      : "border-primary/40 text-white hover:border-primary hover:shadow-[0_0_10px_hsl(var(--primary)/0.4)]"
+                    }`}
                 >
                   <Play size={16} />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className={`h-9 w-9 rounded-full border border-border ${
-                    audioState === "paused"
-                      ? "text-primary border-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
+                </button>
+                <button
                   onClick={handlePause}
                   aria-label="Pause narration"
+                  className={`h-10 w-10 rounded-full flex items-center justify-center
+                    bg-white/10 backdrop-blur-md border transition-all duration-300
+                    ${audioState === "paused"
+                      ? "border-primary text-primary shadow-[0_0_12px_hsl(var(--primary)/0.5)]"
+                      : "border-primary/40 text-white hover:border-primary hover:shadow-[0_0_10px_hsl(var(--primary)/0.4)]"
+                    }`}
                 >
                   <Pause size={16} />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className={`h-9 w-9 rounded-full border border-border ${
-                    audioState === "stopped"
-                      ? "text-primary border-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
+                </button>
+                <button
                   onClick={handleStop}
                   aria-label="Stop narration"
+                  className={`h-10 w-10 rounded-full flex items-center justify-center
+                    bg-white/10 backdrop-blur-md border transition-all duration-300
+                    ${audioState === "stopped"
+                      ? "border-primary text-primary shadow-[0_0_12px_hsl(var(--primary)/0.5)]"
+                      : "border-primary/40 text-white hover:border-primary hover:shadow-[0_0_10px_hsl(var(--primary)/0.4)]"
+                    }`}
                 >
                   <Square size={16} />
-                </Button>
+                </button>
               </div>
             </div>
 
