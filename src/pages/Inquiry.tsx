@@ -183,50 +183,47 @@ const Inquiry = () => {
           </div>
         ) : (
           <div className="space-y-4 pt-2">
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center gap-3">
               <span className="text-xs uppercase tracking-widest text-muted-foreground shrink-0">
                 Audio Narration
               </span>
-              <div className="flex items-center gap-1">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className={`h-9 w-9 rounded-full border border-border ${
-                    audioState === "playing"
-                      ? "text-primary border-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
+              <div className="flex items-center gap-2">
+                <button
                   onClick={handlePlay}
                   aria-label="Play narration"
+                  className={`h-10 w-10 rounded-full flex items-center justify-center
+                    bg-white/10 backdrop-blur-md border transition-all duration-300
+                    ${audioState === "playing"
+                      ? "border-primary text-primary shadow-[0_0_12px_hsl(var(--primary)/0.5)]"
+                      : "border-primary/40 text-white hover:border-primary hover:shadow-[0_0_10px_hsl(var(--primary)/0.4)]"
+                    }`}
                 >
                   <Play size={16} />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className={`h-9 w-9 rounded-full border border-border ${
-                    audioState === "paused"
-                      ? "text-primary border-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
+                </button>
+                <button
                   onClick={handlePause}
                   aria-label="Pause narration"
+                  className={`h-10 w-10 rounded-full flex items-center justify-center
+                    bg-white/10 backdrop-blur-md border transition-all duration-300
+                    ${audioState === "paused"
+                      ? "border-primary text-primary shadow-[0_0_12px_hsl(var(--primary)/0.5)]"
+                      : "border-primary/40 text-white hover:border-primary hover:shadow-[0_0_10px_hsl(var(--primary)/0.4)]"
+                    }`}
                 >
                   <Pause size={16} />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className={`h-9 w-9 rounded-full border border-border ${
-                    audioState === "stopped"
-                      ? "text-primary border-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
+                </button>
+                <button
                   onClick={handleStop}
                   aria-label="Stop narration"
+                  className={`h-10 w-10 rounded-full flex items-center justify-center
+                    bg-white/10 backdrop-blur-md border transition-all duration-300
+                    ${audioState === "stopped"
+                      ? "border-primary text-primary shadow-[0_0_12px_hsl(var(--primary)/0.5)]"
+                      : "border-primary/40 text-white hover:border-primary hover:shadow-[0_0_10px_hsl(var(--primary)/0.4)]"
+                    }`}
                 >
                   <Square size={16} />
-                </Button>
+                </button>
               </div>
             </div>
 
