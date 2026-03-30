@@ -5,10 +5,15 @@ import { Slider } from "@/components/ui/slider";
 import { useToast } from "@/hooks/use-toast";
 import daliAtomicus from "@/assets/dali-atomicus.jpg";
 
-const PLACEHOLDER_AUDIO_URL =
-  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+// Artwork-specific audio mapping
+const ARTWORK_AUDIO: Record<string, string> = {
+  "Dali Atomicus": "/dali-insight.m4a",
+};
+
+const CURRENT_ARTWORK = "Dali Atomicus";
 
 const Inquiry = () => {
+  const artworkAudio = ARTWORK_AUDIO[CURRENT_ARTWORK] || null;
   const [mode, setMode] = useState<"story" | "audio">("story");
   const [audioState, setAudioState] = useState<"stopped" | "playing" | "paused">("stopped");
   const [progress, setProgress] = useState(0);
