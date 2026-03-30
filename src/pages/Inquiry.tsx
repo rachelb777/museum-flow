@@ -23,7 +23,8 @@ const Inquiry = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    const audio = new Audio(PLACEHOLDER_AUDIO_URL);
+    if (!artworkAudio) return;
+    const audio = new Audio(artworkAudio);
     audioRef.current = audio;
 
     audio.addEventListener("loadedmetadata", () => setDuration(audio.duration));
@@ -37,7 +38,7 @@ const Inquiry = () => {
       audio.pause();
       audio.src = "";
     };
-  }, []);
+  }, [artworkAudio]);
 
   const handlePlay = () => {
     audioRef.current?.play();
