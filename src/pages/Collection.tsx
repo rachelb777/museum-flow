@@ -50,7 +50,7 @@ const Collection = () => {
         <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
           <Bookmark size={28} className="text-primary" />
         </div>
-        <h1 className="font-sans text-2xl font-semibold text-gold-gradient">My Vault</h1>
+        <h1 className="font-sans text-2xl font-semibold text-gold-gradient">My Gallery</h1>
         <p className="text-sm text-muted-foreground max-w-xs mx-auto leading-relaxed">
           Your personal archive of saved art, artists, and genres.
         </p>
