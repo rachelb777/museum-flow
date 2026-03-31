@@ -42,7 +42,7 @@ const Collection = () => {
       {/* Artwork list */}
       <div className="w-full max-w-md space-y-6">
         {artworks.map((item, i) => (
-          <div key={i} className="rounded-2xl border border-primary/30 bg-card overflow-hidden">
+          <div key={i} className="rounded-2xl border border-primary/40 shadow-sm bg-card overflow-hidden">
             <img src={item.src} alt={item.title} className="w-full h-auto" loading="lazy" />
             <div className="p-5 space-y-2">
               <h2 className="text-lg font-bold text-foreground">{item.title}</h2>
