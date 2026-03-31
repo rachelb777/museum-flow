@@ -33,33 +33,23 @@ const Collection = () => {
         <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
           <Bookmark size={28} className="text-primary" />
         </div>
-        <h1 className="font-sans text-2xl font-semibold text-gold-gradient">My Gallery</h1>
+        <h1 className="font-sans text-2xl font-semibold text-gold-gradient">Museum Gallery</h1>
         <p className="text-sm text-muted-foreground max-w-xs mx-auto leading-relaxed">
-          Your personal archive of saved art, artists, and genres.
+          Explore scanned artwork details in your personal gallery.
         </p>
       </div>
 
       {/* Artwork list */}
       <div className="w-full max-w-md space-y-6">
         {artworks.map((item, i) => (
-          <div
-            key={i}
-            className="rounded-2xl border border-primary/30 bg-card overflow-hidden"
-          >
-            <img
-              src={item.src}
-              alt={item.title}
-              className="w-full h-auto"
-              loading="lazy"
-            />
+          <div key={i} className="rounded-2xl border border-primary/30 bg-card overflow-hidden">
+            <img src={item.src} alt={item.title} className="w-full h-auto" loading="lazy" />
             <div className="p-5 space-y-2">
               <h2 className="text-lg font-bold text-foreground">{item.title}</h2>
               <p className="text-sm text-muted-foreground italic">
                 {item.artist}, {item.year}
               </p>
-              <p className="text-sm text-foreground/80 leading-relaxed">
-                {item.description}
-              </p>
+              <p className="text-sm text-foreground/80 leading-relaxed">{item.description}</p>
               {item.attribution && (
                 <a
                   href={item.attribution.url}
