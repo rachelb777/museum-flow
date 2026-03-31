@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <div className="min-h-[100dvh] bg-background px-6 pt-14 pb-14">
+    <div className="min-h-[100dvh] bg-background px-6 pt-14 pb-28">
       <div className="max-w-lg mx-auto space-y-10 animate-fade-in">
         {/* Mission */}
 
@@ -23,7 +23,7 @@ const About = () => {
         </section>
 
         {/* How to Use */}
-        <section className="space-y-4">
+        <section className="space-y-4 p-6 pb-6 bg-card rounded-2xl border border-primary/30 shadow-md">
           <h2 className="text-2xl font-semibold text-gold-gradient">How to Use</h2>
           <p className="text-foreground/80 leading-relaxed">
             Scan the icon next to an artwork to instantly view its details. Browse the gallery to explore more pieces at
