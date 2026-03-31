@@ -1,6 +1,7 @@
 import { Bookmark } from "lucide-react";
 import daliAtomicus from "@/assets/dali-atomicus.jpg";
 import riveraMural from "@/assets/rivera-mural.jpg";
+import klimtDeathLife from "@/assets/klimt-death-life.jpg";
 
 interface ArtworkItem {
   src: string;
