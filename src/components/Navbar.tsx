@@ -3,9 +3,9 @@ import { Home, ScanLine, Lightbulb, Bookmark } from "lucide-react";
 
 const navItems = [
   { path: "/", icon: Home, label: "Home" },
-  { path: "/scanner", icon: ScanLine, label: "Scan" },
+  { path: "/scanner", icon: ScanLine, label: "Icon Scan" },
   { path: "/inquiry", icon: Lightbulb, label: "Insights" },
-  { path: "/collection", icon: Bookmark, label: "Vault" },
+  { path: "/collection", icon: Bookmark, label: "Gallery" },
 ];
 
 const Navbar = () => {
