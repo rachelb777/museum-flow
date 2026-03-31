@@ -29,8 +29,7 @@ const App = () => (
             <Route path="/scanner" element={<Scanner />} />
             <Route path="/inquiry" element={<Inquiry />} />
             <Route path="/collection" element={<Collection />} />
-            
-            
+            <Route path="/about" element={<About />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
