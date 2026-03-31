@@ -7,7 +7,13 @@ import blurryArtwork from "@/assets/blurry-artwork.jpg";
 const gestures = [
   {
     label: "Save to Vault",
-    icon: <img src="/assets/victory-hand.svg" alt="Save to Vault" className="w-12 h-12 object-contain brightness-0 invert" />,
+    icon: (
+      <img
+        src="/assets/victory-hand.svg"
+        alt="Save to Vault"
+        className="w-12 h-12 object-contain brightness-0 invert"
+      />
+    ),
   },
   {
     label: "Insights",
@@ -15,11 +21,23 @@ const gestures = [
   },
   {
     label: "Artist Portfolio",
-    icon: <img src="/assets/palm-up-hand.svg" alt="Artist Portfolio" className="w-12 h-12 object-contain brightness-0 invert" />,
+    icon: (
+      <img
+        src="/assets/palm-up-hand.svg"
+        alt="Artist Portfolio"
+        className="w-12 h-12 object-contain brightness-0 invert"
+      />
+    ),
   },
   {
     label: "Genre Discovery",
-    icon: <img src="/assets/hand-point-left.svg" alt="Genre Discovery" className="w-12 h-12 object-contain brightness-0 invert" />,
+    icon: (
+      <img
+        src="/assets/hand-point-left.svg"
+        alt="Genre Discovery"
+        className="w-12 h-12 object-contain brightness-0 invert"
+      />
+    ),
   },
 ];
 
@@ -89,8 +107,12 @@ const Scanner = () => {
           <div className="absolute bottom-14 left-0 right-0 flex justify-center gap-6 z-20 drop-shadow-md">
             {gestures.map((g) => (
               <div key={g.label} className="flex flex-col items-center gap-1.5">
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-2 shadow-[0_0_8px_rgba(255,255,255,0.15)]">{g.icon}</div>
-                <span className="text-[10px] text-white font-bold drop-shadow-sm tracking-wide uppercase">{g.label}</span>
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-2 shadow-[0_0_8px_rgba(255,255,255,0.15)]">
+                  {g.icon}
+                </div>
+                <span className="text-[10px] text-white font-bold drop-shadow-sm tracking-wide uppercase">
+                  {g.label}
+                </span>
               </div>
             ))}
           </div>
@@ -135,7 +157,7 @@ const Scanner = () => {
           }`}
         >
           <Camera size={20} />
-          {captured ? "Processing…" : "Capture"}
+          {captured ? "Processing…" : "Scan Art Icon"}
         </Button>
       </div>
     </div>
